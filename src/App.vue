@@ -1,25 +1,31 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+      <b-container>
+        <b-nav tabs>
+          <b-nav-item exact to="/todos">Listado de todos</b-nav-item>
+          <b-nav-item exact to="/todos/create">Formulario de alta de todos</b-nav-item>
+        </b-nav>
+        <router-view/>
+      </b-container>
   </div>
 </template>
-<style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
 
-#nav
-  padding 30px
-  a
-    font-weight bold
-    color #2c3e50
-    &.router-link-exact-active
-      color #42b983
-</style>
+<script lang="ts">
+import {Component, Vue, Watch} from 'vue-property-decorator'
+//import { State } from 'vuex-class';
+//import AuthMixin from '@/mixins/AuthMixin';
+
+@Component({
+  //mixins: [AuthMixin]
+})
+export default class App extends Vue {
+  // @State('isLogged', {namespace: 'authModule'}) isLogged !: boolean;
+  // public currentPath: string = '/';
+  // @Watch('$route.path', {immediate: true})
+  // changeRoute(path: string): void {
+  //   this.currentPath= path;
+  //   console.log(this.currentPath);
+  // }
+
+}
+</script>

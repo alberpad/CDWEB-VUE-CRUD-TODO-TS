@@ -9,15 +9,25 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      redirect: '/todos',
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/todos',
+      name: 'todos',
+      component: () =>
+        import(/* webpackChunkName: "todos" */ './views/Todos/component'),
+    },
+    {
+      path: '/todos/create',
+      name: 'todo-create',
+      component: () =>
+        import(/* webpackChunkName: "todo-create" */ './views/TodoCreate/component'),
+    },
+    {
+      path: '/todos/:id/update',
+      name: 'todos-update',
+      component: () =>
+        import(/* webpackChunkName: "todos-update" */ './views/TodoUpdate/component'),
     },
   ],
 });

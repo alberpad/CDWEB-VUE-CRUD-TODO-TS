@@ -1,16 +1,22 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { StoreOptions } from 'vuex';
+import vuexLocal from '@/plugins/vuex-persist';
+import { RootState } from '@/store/types';
+import { todoModule } from '@/store/modules/todos/index';
+// import { authModule } from '@/store/modules/auth/index';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store: StoreOptions<RootState> = {
   state: {
-
+    appName: 'Todos',
+    appVersion: '0.0.1',
   },
-  mutations: {
-
+  modules: {
+    todoModule,
+    // authModule
   },
-  actions: {
+  plugins: [vuexLocal.plugin],
+};
 
-  },
-});
+export default new Vuex.Store<RootState>(store);
